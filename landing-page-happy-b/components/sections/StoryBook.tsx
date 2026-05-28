@@ -278,6 +278,7 @@ function PageRight({ id }: { id: SpreadId }) {
             alt="Família"
             fill
             className="object-cover"
+            style={{ objectPosition: "center 40%" }}
             sizes="50vw"
           />
         </div>

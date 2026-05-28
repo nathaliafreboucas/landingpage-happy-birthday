@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Merriweather, Quicksand } from "next/font/google";
 import "./globals.css";
+import SplashScreen from "@/components/ui/SplashScreen";
 
 const merriweather = Merriweather({
   weight: ["400", "700"],
@@ -47,7 +48,10 @@ export default function RootLayout({
       lang="pt-BR"
       className={`${merriweather.variable} ${quicksand.variable}`}
     >
-      <body className="min-h-screen antialiased">{children}</body>
+      <body className="min-h-screen antialiased">
+        <SplashScreen />
+        {children}
+      </body>
     </html>
   );
 }
