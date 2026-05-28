@@ -10,11 +10,13 @@ function PhotoSlot({
   alt = "",
   caption,
   circle = false,
+  objectPosition = "center",
 }: {
   src?: string;
   alt?: string;
   caption?: string;
   circle?: boolean;
+  objectPosition?: string;
 }) {
   const shape = circle
     ? "rounded-full aspect-square w-full max-w-[200px] sm:max-w-[220px] mx-auto"
@@ -25,7 +27,7 @@ function PhotoSlot({
       className={`relative overflow-hidden bg-cream-warm ${shape} flex items-center justify-center`}
     >
       {src ? (
-        <Image src={src} alt={alt} fill className="object-cover" sizes="50vw" />
+        <Image src={src} alt={alt} fill className="object-cover" sizes="50vw" style={{ objectPosition }} />
       ) : (
         <div className="flex flex-col items-center gap-2 text-muted/40 select-none pointer-events-none">
           <span className="text-3xl">📷</span>
@@ -33,7 +35,7 @@ function PhotoSlot({
         </div>
       )}
       {caption && (
-        <p className="absolute bottom-0 inset-x-0 bg-white/75 backdrop-blur-sm text-center font-serif text-forest/70 text-[10px] italic py-1.5 px-2 leading-snug">
+        <p className="absolute bottom-0 inset-x-0 bg-white/75 backdrop-blur-sm text-center font-serif text-forest/70 text-[10px] italic py-1.5 px-2 leading-snug rounded-b-2xl">
           {caption}
         </p>
       )}
@@ -79,21 +81,23 @@ const SPREADS: SpreadId[] = ["cover", "ch1", "ch3", "ch4", "ch5", "cta"];
 // Troque os valores de src pelas fotos reais quando estiverem prontas
 const PHOTOS: Record<string, string> = {
   barriguinha: "",  // ex: "/photos/barriguinha.jpg"
-  nascimento:  "",  // ex: "/photos/nascimento.jpg"
-  heroinas:    "",  // ex: "/photos/heroinas.jpg"
-  aniversario: "",  // ex: "/photos/aniversario.jpg"
+  nascimento:  "/images/familia.jpeg",  // ex: "/photos/nascimento.jpg"
+  heroinas:    "/images/equipe-medica.jpeg",
+  aniversario: "/images/cangaceira.png",  // ex: "/photos/aniversario.jpg"
 };
 
 function PageLeft({ id }: { id: SpreadId }) {
   switch (id) {
     case "cover":
       return (
-        <div className="h-full min-h-[220px] sm:min-h-0 bg-gradient-to-br from-forest to-sage-dark flex flex-col items-center justify-center gap-3 select-none">
-          <span className="text-5xl opacity-20">🌸</span>
-          <div className="text-white/20 text-center">
-            <p className="font-serif text-xl italic">Helena</p>
-            <p className="font-serif text-xs mt-1 opacity-70">02 · julho · 2025</p>
-          </div>
+        <div className="relative h-full min-h-[220px] sm:min-h-0 overflow-hidden">
+          <Image
+            src="/images-person/Helena 6.jpeg"
+            alt="Helena"
+            fill
+            className="object-cover"
+            sizes="50vw"
+          />
         </div>
       );
 
@@ -106,10 +110,6 @@ function PageLeft({ id }: { id: SpreadId }) {
               A nossa casa estava com uma saudade bem apertada. Alguém muito,
               muito querido pela nossa família precisou fazer uma viagem bem
               longa para morar lá em cima, num céu cheio de nuvens macias.
-            </p>
-            <p>
-              A partida repentina trouxe dias de corações apertados, onde
-              todos precisávamos de um abraço quentinho de sol.
             </p>
           </StoryCard>
         </div>
@@ -139,22 +139,16 @@ function PageLeft({ id }: { id: SpreadId }) {
     case "ch4":
       return (
         <div className="h-full min-h-[240px] sm:min-h-0 p-6 sm:p-8 flex flex-col gap-3">
-          <ChapterHead title="O Grande Dia: Minhas Super Heroínas" />
+          <ChapterHead title="O Grande Dia" />
           <p className="font-sans text-text text-xs leading-relaxed">
-            Para me ajudar a chegar em segurança, tive a proteção de uma equipe
-            maravilhosa de verdadeiras{" "}
+            Para me ajudar a chegar em segurança, tive a proteção de
             <strong className="font-semibold text-forest">super heroínas</strong>{" "}
             cuidando de mim e da mamãe em cada detalhe.
           </p>
           <p className="font-sans text-text text-xs leading-relaxed">
-            E para deixar tudo ainda mais emocionante, a minha dinda{" "}
+            E então, eu cheguei! A minha dinda{" "}
             <strong className="font-semibold text-forest">Nathália</strong>{" "}
-            estava lá bem pertinho de nós, registrando cada primeiro suspiro e
-            choro toda emocionada!
-          </p>
-          <p className="font-sans text-text text-xs leading-relaxed">
-            O quarto do hospital parecia o lugar mais abençoado e seguro do
-            universo com o papai, a mamãe e a dinda cuidando de tudo.
+            estava lá bem pertinho de nós, registrando tudo, toda emocionada!
           </p>
         </div>
       );
@@ -165,7 +159,7 @@ function PageLeft({ id }: { id: SpreadId }) {
           <PhotoSlot
             src={PHOTOS.aniversario}
             alt="Helena com 1 aninho"
-            circle
+            objectPosition="center 34%"
           />
         </div>
       );
@@ -176,9 +170,7 @@ function PageLeft({ id }: { id: SpreadId }) {
           <h2 className="font-serif text-forest text-2xl sm:text-3xl font-bold leading-snug">
             Você faz parte dessa história!
           </h2>
-          <p className="font-sans text-muted text-sm">
-            Preparem seus sorrisos mais bonitos para comemorar comigo.
-          </p>
+
           <p className="font-serif text-rose text-sm font-semibold leading-relaxed">
             Visitem a nossa área de Confirmação de Presença e Sugestões de
             Mimos! 🌻
@@ -222,8 +214,7 @@ function PageRight({ id }: { id: SpreadId }) {
             <p>
               Eu era aquela luz de esperança que todos já aguardavam ansiosos
               para encher a casa de cor novamente. Cada chute que eu dava na
-              barriga era um afago de amor em preparação para o dia do nosso
-              encontro.
+              barriga era um afago de amor em preparação para o dia de encontrar o papai e a mamãe.
             </p>
           </StoryCard>
         </div>
@@ -231,13 +222,14 @@ function PageRight({ id }: { id: SpreadId }) {
 
     case "ch3":
       return (
-        <div className="relative h-[200px] sm:h-full bg-cream-warm flex items-center justify-center overflow-hidden">
+        <div className="relative h-[200px] sm:h-full bg-cream-warm overflow-hidden">
           {PHOTOS.nascimento ? (
             <Image
               src={PHOTOS.nascimento}
               alt="O grande dia"
               fill
               className="object-cover"
+              style={{ objectPosition: "center 20%" }}
               sizes="50vw"
             />
           ) : (
@@ -280,12 +272,14 @@ function PageRight({ id }: { id: SpreadId }) {
 
     case "cta":
       return (
-        <div className="h-full min-h-[200px] sm:min-h-0 bg-gradient-to-br from-forest to-sage-dark flex flex-col items-center justify-center gap-3 select-none">
-          <span className="text-5xl opacity-20">🌿</span>
-          <div className="text-white/20 text-center">
-            <p className="font-serif text-lg italic">com amor,</p>
-            <p className="font-serif text-2xl font-bold mt-1">Helena</p>
-          </div>
+        <div className="relative h-full min-h-[200px] sm:min-h-0 overflow-hidden">
+          <Image
+            src="/images/familia-2.jpeg"
+            alt="Família"
+            fill
+            className="object-cover"
+            sizes="50vw"
+          />
         </div>
       );
   }

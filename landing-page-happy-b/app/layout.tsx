@@ -25,6 +25,7 @@ export const metadata: Metadata = {
     title: "Helena 1 Ano",
   },
   icons: {
+    icon: "/images-person/4.png",
     apple: "/images-person/4.png",
   },
 };

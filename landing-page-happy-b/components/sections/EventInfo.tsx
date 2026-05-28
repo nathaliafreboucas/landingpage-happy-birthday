@@ -32,7 +32,7 @@ export default function EventInfo() {
     <section className="py-20 px-6 bg-linen relative">
 
       {/* Helena 5 — MOBILE (<lg): canto superior direito da seção */}
-      <div aria-hidden className="lg:hidden absolute top-16 right-4 sm:right-8 pointer-events-none z-10">
+      <div aria-hidden className="lg:hidden absolute -top-3 lg:top-16 right-4 sm:right-8 pointer-events-none z-10">
         <HelenaSticker src="/images-person/5.png" size="md" rotate={-9} delay="1.5s" />
       </div>
 
