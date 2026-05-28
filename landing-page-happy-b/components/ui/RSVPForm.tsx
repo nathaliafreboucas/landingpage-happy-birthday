@@ -75,11 +75,9 @@ export default function RSVPForm() {
             <button
               key={opt.value}
               type="button"
-              onTouchEnd={(e) => { e.preventDefault(); setAttending(opt.value); }}
               onClick={() => setAttending(opt.value)}
-              style={{ touchAction: "manipulation", WebkitTapHighlightColor: "transparent" }}
               className={`
-                flex-1 min-w-[80px] py-2.5 px-3 rounded-full font-sans text-sm font-semibold cursor-pointer
+                flex-1 min-w-[80px] py-2.5 px-3 rounded-full font-sans text-sm font-semibold cursor-pointer touch-manipulation
                 border transition-all duration-200 active:scale-95
                 ${attending === opt.value
                   ? opt.value === "yes"   ? "bg-sage text-white border-sage"
@@ -104,7 +102,6 @@ export default function RSVPForm() {
           <div className="flex items-center gap-3">
             <button
               type="button"
-              onTouchEnd={(e) => { e.preventDefault(); setGuests((g) => Math.max(1, g - 1)); }}
               onClick={() => setGuests((g) => Math.max(1, g - 1))}
               className="w-9 h-9 rounded-full border border-cream-warm bg-white text-forest font-bold flex items-center justify-center hover:border-sage transition-colors touch-manipulation cursor-pointer"
             >
@@ -113,7 +110,6 @@ export default function RSVPForm() {
             <span className="font-serif text-forest text-xl w-6 text-center">{guests}</span>
             <button
               type="button"
-              onTouchEnd={(e) => { e.preventDefault(); setGuests((g) => Math.min(10, g + 1)); }}
               onClick={() => setGuests((g) => Math.min(10, g + 1))}
               className="w-9 h-9 rounded-full border border-cream-warm bg-white text-forest font-bold flex items-center justify-center hover:border-sage transition-colors touch-manipulation cursor-pointer"
             >
@@ -141,7 +137,6 @@ export default function RSVPForm() {
       {/* Botão enviar */}
       <button
         type="submit"
-        onTouchEnd={(e) => { e.preventDefault(); doSubmit(); }}
         disabled={!name.trim() || !attending || loading}
         className="w-full py-3.5 rounded-full bg-sage text-white font-sans font-bold text-base tracking-wide
           hover:bg-sage-dark active:scale-95 transition-all duration-200 touch-manipulation cursor-pointer
