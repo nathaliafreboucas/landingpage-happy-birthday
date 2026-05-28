@@ -24,6 +24,9 @@ export const metadata: Metadata = {
     statusBarStyle: "default",
     title: "Helena 1 Ano",
   },
+  icons: {
+    apple: "/images-person/4.png",
+  },
 };
 
 export const viewport: Viewport = {
