@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+/* ─── Tokens de cor (gera utilitários bg-*, text-*, border-* via Tailwind v4) ─── */
+@theme {
+  --color-cream:       #faf6ef;
+  --color-cream-warm:  #f0e8d8;
+  --color-sage:        #8fab87;
+  --color-sage-dark:   #6b8c67;
+  --color-sage-light:  #e8f0e5;
+  --color-rose:        #c8888a;
+  --color-rose-light:  #f5eaea;
+  --color-rose-pale:   #fdf2f2;
+  --color-forest:      #234d40;
+  --color-text:        #4a4540;
+  --color-muted:       #8a8078;
+  --color-gold:        #c8a86b;
+}
+
+/* ─── Fontes (inline: resolve a var de runtime do next/font) ─── */
+@theme inline {
+  --font-sans:  var(--font-quicksand);
+  --font-serif: var(--font-merriweather);
+}
+
+/* ─── Animações customizadas ─── */
+@theme {
+  --animate-float:    float 4s ease-in-out infinite;
+  --animate-fade-up:  fade-up 0.6s ease-out both;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Base ─── */
+body {
+  background-color: #faf6ef;
+  color: #4a4540;
+  font-family: var(--font-quicksand), system-ui, sans-serif;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-merriweather), Georgia, serif;
+  color: #234d40;
+}
+
+/* ─── Textura de linho (fundo principal) ─── */
+.bg-linen {
+  background-image: url('/images/textura.png');
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #faf6ef;
+}
+
+/* ─── Textura xadrez sálvia (seções destacadas) ─── */
+.bg-gingham {
+  background-image: url('/images/backgroud-quadriculado.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #faf6ef;
+  opacity: 1;
+}
+
+/* ─── Card polaroid ─── */
+.polaroid {
+  background: #ffffff;
+  padding: 12px 12px 36px 12px;
+  box-shadow:
+    0 2px 8px rgba(74, 69, 64, 0.12),
+    0 6px 20px rgba(74, 69, 64, 0.08);
+}
+
+/* ─── Borda pontilhada xadrez nos cards de presente ─── */
+.gift-border {
+  border: 2px dashed #8fab87;
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 4px,
+      rgba(143, 171, 135, 0.06) 4px,
+      rgba(143, 171, 135, 0.06) 8px
+    );
+}
+
+/* ─── StoryBook: virada de página ─── */
+.book-exit-fwd  { animation: book-exit-fwd  0.32s cubic-bezier(0.4, 0, 1, 1)   forwards; }
+.book-enter-fwd { animation: book-enter-fwd 0.32s cubic-bezier(0, 0, 0.6, 1)   forwards; }
+.book-exit-bwd  { animation: book-exit-bwd  0.32s cubic-bezier(0.4, 0, 1, 1)   forwards; }
+.book-enter-bwd { animation: book-enter-bwd 0.32s cubic-bezier(0, 0, 0.6, 1)   forwards; }
+
+@keyframes book-exit-fwd {
+  from { opacity: 1; transform: perspective(1400px) rotateY(0deg)  translateX(0);     }
+  to   { opacity: 0; transform: perspective(1400px) rotateY(-6deg) translateX(-18px); }
+}
+@keyframes book-enter-fwd {
+  from { opacity: 0; transform: perspective(1400px) rotateY(6deg)  translateX(18px); }
+  to   { opacity: 1; transform: perspective(1400px) rotateY(0deg)  translateX(0);    }
+}
+@keyframes book-exit-bwd {
+  from { opacity: 1; transform: perspective(1400px) rotateY(0deg) translateX(0);    }
+  to   { opacity: 0; transform: perspective(1400px) rotateY(6deg) translateX(18px); }
+}
+@keyframes book-enter-bwd {
+  from { opacity: 0; transform: perspective(1400px) rotateY(-6deg) translateX(-18px); }
+  to   { opacity: 1; transform: perspective(1400px) rotateY(0deg)  translateX(0);     }
+}
