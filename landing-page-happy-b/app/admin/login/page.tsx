@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import Image from "next/image";
 import { auth } from "@/lib/firebase-auth";
 
 const FONT = "-apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif";
@@ -40,17 +41,18 @@ export default function AdminLogin() {
         <div className="bg-white rounded-[22px] shadow-[0_2px_24px_rgba(0,0,0,0.08)] px-10 py-12">
           {/* Logo mark */}
           <div className="flex justify-center mb-6">
-            <div className="w-14 h-14 rounded-full bg-[#f5f5f7] flex items-center justify-center text-3xl">
-              🩷
-            </div>
+            <Image
+              src="/images-admin/main-logo-hgt.png"
+              alt="Logo Have A Good Time"
+              width={80}
+              height={80}
+              className="object-contain"
+            />
           </div>
 
           <h1 className="text-[#1d1d1f] text-2xl font-semibold text-center mb-1 tracking-tight">
             Área Administrativa
           </h1>
-          <p className="text-[#86868b] text-sm text-center mb-8">
-            Festa da Helena · 1 aninho
-          </p>
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>

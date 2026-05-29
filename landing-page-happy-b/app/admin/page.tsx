@@ -2,10 +2,12 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
-import { signOut, onAuthStateChanged, reauthenticateWithCredential, updatePassword, EmailAuthProvider } from "firebase/auth";
+import { signOut, onAuthStateChanged, reauthenticateWithCredential, updatePassword, updateProfile, EmailAuthProvider } from "firebase/auth";
 import { auth } from "@/lib/firebase-auth";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, getDoc, doc } from "firebase/firestore";
 import { db } from "@/lib/firebase";
+import Image from "next/image";
+import { FiCopy, FiCheck } from "react-icons/fi";
 import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
 
@@ -249,15 +251,42 @@ export default function AdminDashboard() {
   const [showChangePwd, setShowChangePwd] = useState(false);
   const [loading, setLoading]           = useState(true);
   const [authChecked, setAuthChecked]   = useState(false);
+  const [userName, setUserName]         = useState("");
+  const [userEmail, setUserEmail]       = useState("");
+  const [copied, setCopied]             = useState(false);
 
-  // Guard: redirect if not authenticated in Firebase
+  // Guard: redirect if not authenticated; fetch profile from Firestore
   useEffect(() => {
-    const unsub = onAuthStateChanged(auth, (user) => {
-      if (!user) router.replace("/admin/login");
+    const unsub = onAuthStateChanged(auth, async (user) => {
+      if (!user) { router.replace("/admin/login"); return; }
+      setUserEmail(user.email ?? "");
+      try {
+        const snap = await getDoc(doc(db, "users", user.uid));
+        if (snap.exists()) setUserName(snap.data().name ?? "");
+      } catch { /* perfil não encontrado, sem problema */ }
       setAuthChecked(true);
     });
     return unsub;
   }, [router]);
+
+  async function copyEmail() {
+    try {
+      await navigator.clipboard.writeText(userEmail);
+    } catch {
+      // fallback para navegadores antigos / iOS sem permissão
+      const el = document.createElement("textarea");
+      el.value = userEmail;
+      el.style.position = "fixed";
+      el.style.opacity = "0";
+      document.body.appendChild(el);
+      el.focus();
+      el.select();
+      document.execCommand("copy");
+      document.body.removeChild(el);
+    }
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  }
 
   const fetchRSVPs = useCallback(async () => {
     setLoading(true);
@@ -368,12 +397,30 @@ export default function AdminDashboard() {
 
       {/* Top Nav */}
       <header className="bg-white/80 backdrop-blur-md border-b border-[#d2d2d7]/60 sticky top-0 z-30">
-        <div className="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
-          <div className="flex items-center gap-2.5">
-            <span className="text-lg">🩷</span>
-            <span className="text-[#1d1d1f] text-[15px] font-semibold tracking-tight">
-              Festa da Helena
-            </span>
+        <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <Image
+              src="/images-admin/simple-logo-hgt.png"
+              alt="HGT"
+              width={50}
+              height={50}
+              className="object-contain"
+            />
+            <div className="flex flex-col leading-tight">
+              <span className="text-[#1d1d1f] text-[14px] font-semibold tracking-tight">
+                {userName ? `Olá, ${userName}` : "Olá!"}
+              </span>
+              <div className="flex items-center gap-1.5 mt-0.5">
+                <span className="text-[#86868b] text-[12px]">{userEmail}</span>
+                <button
+                  onClick={copyEmail}
+                  title="Copiar e-mail"
+                  className="text-[#86868b] hover:text-[#0071e3] transition-colors"
+                >
+                  {copied ? <FiCheck size={13} /> : <FiCopy size={13} />}
+                </button>
+              </div>
+            </div>
           </div>
           <div className="flex items-center gap-2">
             <button
