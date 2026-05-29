@@ -21,6 +21,12 @@ export default function Home() {
         <p className="font-sans text-white/30 text-sm mt-1">
           © {new Date().getFullYear()} Bday-Helena. Todos os direitos reservados.
         </p>
+        <a
+          href="/admin"
+          className="inline-block mt-4 font-sans text-white/20 text-xs hover:text-white/50 transition-colors"
+        >
+          Área administrativa
+        </a>
       </footer>
 
     </main>
