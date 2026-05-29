@@ -43,12 +43,12 @@ export default function GiftCard({ gift }: Props) {
       </h3>
 
       {/* Descrição */}
-      <p className="font-sans text-muted text-sm text-center leading-relaxed mb-4">
+      <p className="font-sans text-muted text-base text-center leading-relaxed mb-4">
         {gift.description}
       </p>
 
       {/* Hint de tamanho/detalhe */}
-      <p className="font-sans text-sage-dark text-xs text-center italic mb-5">
+      <p className="font-sans text-sage-dark text-sm text-center italic mb-5">
         {gift.hint}
       </p>
 
@@ -56,7 +56,7 @@ export default function GiftCard({ gift }: Props) {
       <button
         onClick={() => setReserved((v) => !v)}
         className={`
-          w-full py-2.5 rounded-full font-sans font-bold text-sm tracking-wide
+          w-full py-2.5 rounded-full font-sans font-bold text-base tracking-wide
           transition-all duration-300 hover:scale-105 active:scale-95
           ${reserved
             ? "bg-rose-light text-rose border border-rose"

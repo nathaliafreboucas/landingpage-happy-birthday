@@ -64,21 +64,21 @@ export default function EventInfo() {
               <div className="w-12 h-12 rounded-full bg-sage-light flex items-center justify-center text-2xl mx-auto mb-3">
                 {card.emoji}
               </div>
-              <p className="font-sans text-muted text-xs uppercase tracking-wider mb-1">
+              <p className="font-sans text-muted text-sm uppercase tracking-wider mb-1">
                 {card.label}
               </p>
               <p className="font-serif text-forest font-bold text-base leading-snug mb-1">
                 {card.value}
               </p>
               {card.sub && (
-                <p className="font-sans text-muted text-xs">{card.sub}</p>
+                <p className="font-sans text-muted text-sm">{card.sub}</p>
               )}
               {card.href && card.href !== "#" && (
                 <a
                   href={card.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block mt-3 text-sage text-xs font-semibold underline underline-offset-2 hover:text-sage-dark transition-colors"
+                  className="inline-block mt-3 text-sage text-sm font-semibold underline underline-offset-2 hover:text-sage-dark transition-colors"
                 >
                   Ver no mapa →
                 </a>

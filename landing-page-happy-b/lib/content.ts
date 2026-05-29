@@ -9,8 +9,8 @@ export const content = {
   event: {
     date: "DD de Mês de 2025",       // TODO: preencher
     time: "HH:00h",                   // TODO: preencher
-    venue: "Nome do Local",           // TODO: preencher
-    address: "Endereço, Cidade – UF", // TODO: preencher
+    venue: "Salão de Festas – Soberano Condominium Classic",
+    address: "Rua Mário Mamede, 943 – Fátima",
     mapsUrl: "#",                     // TODO: link do Google Maps
     dressCode: "Traje passeio",
   },

@@ -13,13 +13,16 @@ export default function HelenaSticker({
   size = "md",
   rotate = 0,
   delay = "0s",
+  priority = false,
 }: {
   src: string;
   size?: Size;
   rotate?: number;
   delay?: string;
+  priority?: boolean;
 }) {
   const { wrapper, sizes } = sizeMap[size];
+
 
   return (
     <div
@@ -34,7 +37,7 @@ export default function HelenaSticker({
             "0 8px 24px rgba(35,77,64,0.25), 0 2px 8px rgba(35,77,64,0.12), 0 0 0 1px rgba(200,186,168,0.3)",
         }}
       >
-        <Image src={src} alt="Helena 🎉" fill className="object-cover" sizes={sizes} />
+        <Image src={src} alt="Helena 🎉" fill className="object-cover" sizes={sizes} priority={priority} />
       </div>
     </div>
   );

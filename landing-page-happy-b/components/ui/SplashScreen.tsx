@@ -13,9 +13,28 @@ export default function SplashScreen() {
   }
 
   useEffect(() => {
-    // Fallback: fecha após 12s caso o vídeo não toque
+    const video = videoRef.current;
+    if (!video) return;
+
+    // iOS antigo (< 10) precisa desse atributo via JS
+    video.setAttribute("webkit-playsinline", "");
+
+    const tryPlay = () => {
+      video.play().catch(() => startHide());
+    };
+
+    // Só tenta play quando o browser tem dados suficientes —
+    // evita rejeição falsa por "not enough data" no iOS
+    video.addEventListener("canplay", tryPlay, { once: true });
+    // Se o vídeo já tem dados suficientes (cache/reload rápido), canplay não vai mais disparar
+    if (video.readyState >= 3) tryPlay();
+
     const fallback = setTimeout(startHide, 3_000);
-    return () => clearTimeout(fallback);
+
+    return () => {
+      video.removeEventListener("canplay", tryPlay);
+      clearTimeout(fallback);
+    };
   }, []);
 
   if (gone) return null;
@@ -27,14 +46,13 @@ export default function SplashScreen() {
     >
       <div className="absolute inset-0 bg-gingham opacity-10 pointer-events-none" />
 
-      {/* Vídeo com cantos arredondados */}
       <div className="relative w-[88vw] max-w-[380px] rounded-2xl overflow-hidden shadow-2xl">
         <video
           ref={videoRef}
           src="/video/helena.mp4"
-          autoPlay
           muted
           playsInline
+          preload="auto"
           className="w-full h-auto block"
           loop
         />
@@ -42,7 +60,7 @@ export default function SplashScreen() {
 
       <button
         onClick={startHide}
-        className="absolute bottom-6 font-sans text-white/35 text-xs hover:text-white/60 transition-colors cursor-pointer"
+        className="absolute bottom-6 font-sans text-white/35 text-sm hover:text-white/60 transition-colors cursor-pointer"
       >
         pular →
       </button>

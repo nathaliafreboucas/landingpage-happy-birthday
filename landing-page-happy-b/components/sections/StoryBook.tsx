@@ -49,7 +49,7 @@ function ChapterHead({ title, sub }: { title: string; sub?: string }) {
       <h2 className="font-serif text-forest font-bold leading-snug text-base sm:text-lg">
         {title}
       </h2>
-      {sub && <p className="font-serif text-rose text-xs italic mt-0.5">{sub}</p>}
+      {sub && <p className="font-serif text-rose text-sm italic mt-0.5">{sub}</p>}
       <div className="mt-2 border-t-2 border-dashed border-sage/25" />
     </div>
   );
@@ -64,8 +64,8 @@ function StoryCard({
 }) {
   return (
     <div className="bg-white/55 rounded-xl p-4 sm:p-5 border border-dashed border-sage/30 shadow-sm">
-      <h3 className="font-serif text-forest text-sm font-bold mb-2">{title}</h3>
-      <div className="font-sans text-text text-xs leading-relaxed space-y-2">
+      <h3 className="font-serif text-forest text-base font-bold mb-2">{title}</h3>
+      <div className="font-sans text-text text-sm leading-relaxed space-y-2">
         {children}
       </div>
     </div>
@@ -119,16 +119,16 @@ function PageLeft({ id }: { id: SpreadId }) {
       return (
         <div className="h-full min-h-[240px] sm:min-h-0 p-6 sm:p-8 flex flex-col gap-3">
           <ChapterHead title="O Grande Dia: 02 de Julho" />
-          <h3 className="font-serif text-forest text-sm font-semibold">
+          <h3 className="font-serif text-forest text-base font-semibold">
             O meu nascimento
           </h3>
-          <p className="font-sans text-text text-xs leading-relaxed">
+          <p className="font-sans text-text text-sm leading-relaxed">
             No dia{" "}
             <strong className="font-semibold text-forest">02/07</strong>,
             decidi que era hora de mostrar minhas bochechas para o mundo! Mas
             não foi assim tão rápido…
           </p>
-          <p className="font-sans text-text text-xs leading-relaxed">
+          <p className="font-sans text-text text-sm leading-relaxed">
             Foram muitas e muitas horas de espera e trabalho de parto da mamãe.
             Eu estava muito confortável lá dentro, mas o amor aqui fora já
             estava pronto para transbordar por completo!
@@ -140,12 +140,12 @@ function PageLeft({ id }: { id: SpreadId }) {
       return (
         <div className="h-full min-h-[240px] sm:min-h-0 p-6 sm:p-8 flex flex-col gap-3">
           <ChapterHead title="O Grande Dia" />
-          <p className="font-sans text-text text-xs leading-relaxed">
-            Para me ajudar a chegar em segurança, tive a proteção de
+          <p className="font-sans text-text text-sm leading-relaxed">
+            Para me ajudar a chegar em segurança, tive a proteção de{" "}
             <strong className="font-semibold text-forest">super heroínas</strong>{" "}
             cuidando de mim e da mamãe em cada detalhe.
           </p>
-          <p className="font-sans text-text text-xs leading-relaxed">
+          <p className="font-sans text-text text-sm leading-relaxed">
             E então, eu cheguei! A minha dinda{" "}
             <strong className="font-semibold text-forest">Nathália</strong>{" "}
             estava lá bem pertinho de nós, registrando tudo, toda emocionada!
@@ -171,9 +171,9 @@ function PageLeft({ id }: { id: SpreadId }) {
             Você faz parte dessa história!
           </h2>
 
-          <p className="font-serif text-rose text-sm font-semibold leading-relaxed">
+          <p className="font-serif text-rose text-base font-semibold leading-relaxed">
             Visitem a nossa área de Confirmação de Presença e Sugestões de
-            Mimos! 🌻
+            Mimos!
           </p>
         </div>
       );
@@ -190,13 +190,13 @@ function PageRight({ id }: { id: SpreadId }) {
             background: "linear-gradient(135deg, #fdf2f2, #faf6ef)",
           }}
         >
-          <p className="font-sans text-rose text-sm font-semibold tracking-wide">
-            🎈 Helena apresenta:
+          <p className="font-sans text-rose text-base font-semibold tracking-wide">
+             Helena apresenta:
           </p>
           <h1 className="font-serif text-forest text-2xl sm:text-3xl font-bold leading-tight max-w-[280px]">
             Como o Amor Trouxe muita alegria
           </h1>
-          <p className="font-sans text-muted text-xs leading-relaxed max-w-[240px]">
+          <p className="font-sans text-muted text-sm leading-relaxed max-w-[240px]">
             A doce historinha do meu primeiro ano de vida, contada por mim para
             todos os meus queridos convidados.
           </p>
@@ -229,7 +229,7 @@ function PageRight({ id }: { id: SpreadId }) {
               alt="O grande dia"
               fill
               className="object-cover"
-              style={{ objectPosition: "center 20%" }}
+              style={{ objectPosition: "center 60%" }}
               sizes="50vw"
             />
           ) : (
@@ -247,7 +247,7 @@ function PageRight({ id }: { id: SpreadId }) {
           <PhotoSlot
             src={PHOTOS.heroinas}
             alt="O primeiro olhar da dinda"
-            caption="O primeiro olhar da dinda 💕"
+            caption="O primeiro olhar da dinda"
           />
         </div>
       );
@@ -256,12 +256,12 @@ function PageRight({ id }: { id: SpreadId }) {
       return (
         <div className="h-full min-h-[240px] sm:min-h-0 p-6 sm:p-8 flex flex-col justify-center gap-4">
           <ChapterHead title="E o tempo voou… Já vou fazer 1 ano!" />
-          <p className="font-sans text-text text-xs leading-relaxed">
+          <p className="font-sans text-text text-sm leading-relaxed">
             Parece que foi ontem que eu cabia no colo com facilidade, mas agora
             eu já estou explorando tudo! Aprendi a engatinhar, a dar gargalhadas
             e a apontar para as coisas que acho fofas.
           </p>
-          <p className="font-sans text-text text-xs leading-relaxed">
+          <p className="font-sans text-text text-sm leading-relaxed">
             Eu enchi nosso lar de Luz! No dia{" "}
             <strong className="font-semibold text-forest">02 de Julho</strong>,
             vou comemorar a minha primeira voltinha inteira ao redor do sol e

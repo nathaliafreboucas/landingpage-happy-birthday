@@ -9,7 +9,7 @@ export default function RSVPSection() {
     <section className="py-20 px-6 bg-gingham relative">
 
       {/* Helena 6 — MOBILE (<sm): canto superior direito da seção */}
-      <div aria-hidden className="sm:hidden absolute top-16 right-4 pointer-events-none z-10">
+      <div aria-hidden className="sm:hidden absolute top-6 right-4 pointer-events-none z-10">
         <HelenaSticker src="/images-person/6.png" size="sm" rotate={10} delay="0.4s" />
       </div>
 
@@ -21,7 +21,7 @@ export default function RSVPSection() {
       <div className="max-w-md mx-auto relative">
 
         {/* Helena 6 — DESKTOP (sm+): canto superior direito do container */}
-        <div aria-hidden className="hidden sm:block absolute -top-10 -right-10 pointer-events-none z-10">
+        <div aria-hidden className="hidden sm:block absolute -top-20 -right-10 pointer-events-none z-10">
           <HelenaSticker src="/images-person/6.png" size="sm" rotate={10} delay="0.4s" />
         </div>
 

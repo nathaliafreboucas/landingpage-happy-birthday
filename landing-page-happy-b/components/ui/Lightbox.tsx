@@ -45,7 +45,7 @@ export default function Lightbox({ photos, initialIndex, onClose }: Props) {
         {/* Fechar */}
         <button
           onClick={onClose}
-          className="absolute -top-4 -right-4 z-10 w-8 h-8 rounded-full bg-rose text-white flex items-center justify-center shadow-md text-sm font-bold hover:bg-rose-dark transition-colors"
+          className="absolute -top-4 -right-4 z-10 w-8 h-8 rounded-full bg-rose text-white flex items-center justify-center shadow-md text-base font-bold hover:bg-rose-dark transition-colors"
           aria-label="Fechar"
         >
           ✕
@@ -63,12 +63,12 @@ export default function Lightbox({ photos, initialIndex, onClose }: Props) {
         </div>
 
         {/* Legenda poética */}
-        <p className="mt-2 text-center font-serif text-forest text-sm italic">
+        <p className="mt-2 text-center font-serif text-forest text-base italic">
           {photo.caption}
         </p>
 
         {/* Contador */}
-        <p className="mt-1 text-center font-sans text-muted text-xs">
+        <p className="mt-1 text-center font-sans text-muted text-sm">
           {current + 1} / {photos.length}
         </p>
       </div>

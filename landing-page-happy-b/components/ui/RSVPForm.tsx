@@ -122,7 +122,7 @@ export default function RSVPForm() {
         <p className="font-serif text-forest text-xl font-bold mb-2">
           Recebemos sua resposta!
         </p>
-        <p className="font-sans text-muted text-sm">
+        <p className="font-sans text-muted text-base">
           {content.rsvp.successMessage}
         </p>
       </div>
@@ -137,7 +137,7 @@ export default function RSVPForm() {
         <p className="font-serif text-forest text-xl font-bold mb-2">
           Você já confirmou!
         </p>
-        <p className="font-sans text-muted text-sm leading-relaxed">
+        <p className="font-sans text-muted text-base leading-relaxed">
           Já recebemos uma resposta com esse número de telefone.
           <br />
           Se precisar corrigir algo, fale com a família.
@@ -153,7 +153,7 @@ export default function RSVPForm() {
 
         {/* Nome completo */}
         <div>
-          <label className="block font-sans text-forest text-sm font-semibold mb-1.5">
+          <label className="block font-sans text-forest text-base font-semibold mb-1.5">
             Seu nome completo <span className="text-rose">*</span>
           </label>
           <input
@@ -162,13 +162,13 @@ export default function RSVPForm() {
             onChange={(e) => setName(e.target.value)}
             placeholder="Como você se chama?"
             required
-            className="w-full px-4 py-3 rounded-xl border border-cream-warm bg-white font-sans text-text text-sm placeholder:text-muted/60 focus:outline-none focus:ring-2 focus:ring-sage/50 focus:border-sage transition-colors"
+            className="w-full px-4 py-3 rounded-xl border border-cream-warm bg-white font-sans text-text text-base placeholder:text-muted/60 focus:outline-none focus:ring-2 focus:ring-sage/50 focus:border-sage transition-colors"
           />
         </div>
 
         {/* Telefone */}
         <div>
-          <label className="block font-sans text-forest text-sm font-semibold mb-1.5">
+          <label className="block font-sans text-forest text-base font-semibold mb-1.5">
             Telefone <span className="text-rose">*</span>
           </label>
           <input
@@ -177,23 +177,23 @@ export default function RSVPForm() {
             onChange={(e) => setPhone(formatPhone(e.target.value))}
             placeholder="(11) 99999-9999"
             required
-            className="w-full px-4 py-3 rounded-xl border border-cream-warm bg-white font-sans text-text text-sm placeholder:text-muted/60 focus:outline-none focus:ring-2 focus:ring-sage/50 focus:border-sage transition-colors"
+            className="w-full px-4 py-3 rounded-xl border border-cream-warm bg-white font-sans text-text text-base placeholder:text-muted/60 focus:outline-none focus:ring-2 focus:ring-sage/50 focus:border-sage transition-colors"
           />
-          <p className="font-sans text-muted text-xs mt-1">
+          <p className="font-sans text-muted text-sm mt-1">
             Celular ou fixo, com DDD
           </p>
         </div>
 
         {/* Vai ou não */}
         <div>
-          <label className="block font-sans text-forest text-sm font-semibold mb-2">
+          <label className="block font-sans text-forest text-base font-semibold mb-2">
             Você vai comparecer? <span className="text-rose">*</span>
           </label>
           <div className="flex gap-3">
             <button
               type="button"
               onClick={() => handleAttending("yes")}
-              className={`flex-1 py-3 px-4 rounded-full font-sans text-sm font-semibold border transition-all duration-200 active:scale-95 cursor-pointer touch-manipulation
+              className={`flex-1 py-3 px-4 rounded-full font-sans text-base font-semibold border transition-all duration-200 active:scale-95 cursor-pointer touch-manipulation
                 ${attending === "yes"
                   ? "bg-sage text-white border-sage"
                   : "bg-white text-muted border-cream-warm hover:border-sage"}`}
@@ -203,7 +203,7 @@ export default function RSVPForm() {
             <button
               type="button"
               onClick={() => handleAttending("no")}
-              className={`flex-1 py-3 px-4 rounded-full font-sans text-sm font-semibold border transition-all duration-200 active:scale-95 cursor-pointer touch-manipulation
+              className={`flex-1 py-3 px-4 rounded-full font-sans text-base font-semibold border transition-all duration-200 active:scale-95 cursor-pointer touch-manipulation
                 ${attending === "no"
                   ? "bg-rose-light text-rose border-rose"
                   : "bg-white text-muted border-cream-warm hover:border-sage"}`}
@@ -216,7 +216,7 @@ export default function RSVPForm() {
         {/* Convidados extras — só quando sim */}
         {attending === "yes" && (
           <div className="animate-fade-up space-y-3">
-            <label className="block font-sans text-forest text-sm font-semibold">
+            <label className="block font-sans text-forest text-base font-semibold">
               Quer confirmar a presença de mais alguém?
             </label>
             <div className="flex items-center gap-3">
@@ -239,7 +239,7 @@ export default function RSVPForm() {
               >
                 +
               </button>
-              <span className="font-sans text-muted text-xs">
+              <span className="font-sans text-muted text-sm">
                 {extraCount === 0
                   ? "só você"
                   : extraCount === 1
@@ -258,7 +258,7 @@ export default function RSVPForm() {
                     onChange={(e) => setGuestName(i, e.target.value)}
                     placeholder={`Nome completo do convidado ${i + 1}`}
                     required
-                    className="w-full px-4 py-3 rounded-xl border border-cream-warm bg-white font-sans text-text text-sm placeholder:text-muted/60 focus:outline-none focus:ring-2 focus:ring-sage/50 focus:border-sage transition-colors"
+                    className="w-full px-4 py-3 rounded-xl border border-cream-warm bg-white font-sans text-text text-base placeholder:text-muted/60 focus:outline-none focus:ring-2 focus:ring-sage/50 focus:border-sage transition-colors"
                   />
                 ))}
               </div>
@@ -268,7 +268,7 @@ export default function RSVPForm() {
 
         {/* Mensagem opcional */}
         <div>
-          <label className="block font-sans text-forest text-sm font-semibold mb-1.5">
+          <label className="block font-sans text-forest text-base font-semibold mb-1.5">
             Deixe uma mensagem para a Helena{" "}
             <span className="font-normal text-muted">(opcional)</span>
           </label>
@@ -277,12 +277,12 @@ export default function RSVPForm() {
             onChange={(e) => setMessage(e.target.value)}
             placeholder="Escreva algo com carinho para nossa princesinha…"
             rows={3}
-            className="w-full px-4 py-3 rounded-xl border border-cream-warm bg-white font-sans text-text text-sm placeholder:text-muted/60 focus:outline-none focus:ring-2 focus:ring-sage/50 focus:border-sage transition-colors resize-none"
+            className="w-full px-4 py-3 rounded-xl border border-cream-warm bg-white font-sans text-text text-base placeholder:text-muted/60 focus:outline-none focus:ring-2 focus:ring-sage/50 focus:border-sage transition-colors resize-none"
           />
         </div>
 
         {error && (
-          <p className="font-sans text-rose text-sm text-center">{error}</p>
+          <p className="font-sans text-rose text-base text-center">{error}</p>
         )}
 
         <button
@@ -311,30 +311,30 @@ export default function RSVPForm() {
 
             {attending === "yes" ? (
               <>
-                <p className="font-sans text-rose text-xs font-semibold uppercase tracking-wider mb-1">
+                <p className="font-sans text-rose text-sm font-semibold uppercase tracking-wider mb-1">
                   Confirmação de presença
                 </p>
                 <h3 className="font-serif text-forest text-lg font-bold mb-1">
                   Tudo certo?
                 </h3>
-                <p className="font-sans text-muted text-xs mb-4">
+                <p className="font-sans text-muted text-sm mb-4">
                   Verifique os dados antes de confirmar.
                 </p>
                 <div className="bg-cream-warm rounded-xl p-4 space-y-2 mb-5">
                   <div className="flex items-center gap-2">
-                    <span className="text-sage text-sm">✓</span>
-                    <span className="font-sans text-text text-sm font-semibold">
+                    <span className="text-sage text-base">✓</span>
+                    <span className="font-sans text-text text-base font-semibold">
                       {name.trim()}
                     </span>
-                    <span className="font-sans text-muted text-xs">(você)</span>
+                    <span className="font-sans text-muted text-sm">(você)</span>
                   </div>
                   {guestNames.map((g, i) => (
                     <div key={i} className="flex items-center gap-2">
-                      <span className="text-sage text-sm">✓</span>
-                      <span className="font-sans text-text text-sm">{g.trim()}</span>
+                      <span className="text-sage text-base">✓</span>
+                      <span className="font-sans text-text text-base">{g.trim()}</span>
                     </div>
                   ))}
-                  <p className="font-sans text-muted text-xs pt-1 border-t border-cream-warm/60">
+                  <p className="font-sans text-muted text-sm pt-1 border-t border-cream-warm/60">
                     Total: {1 + guestNames.length}{" "}
                     {1 + guestNames.length === 1 ? "pessoa" : "pessoas"} · {phone}
                   </p>
@@ -342,20 +342,20 @@ export default function RSVPForm() {
               </>
             ) : (
               <>
-                <p className="font-sans text-rose text-xs font-semibold uppercase tracking-wider mb-1">
+                <p className="font-sans text-rose text-sm font-semibold uppercase tracking-wider mb-1">
                   Confirmação de ausência
                 </p>
                 <h3 className="font-serif text-forest text-lg font-bold mb-4">
                   Tem certeza?
                 </h3>
                 <div className="bg-cream-warm rounded-xl p-4 mb-5">
-                  <p className="font-sans text-text text-sm">
+                  <p className="font-sans text-text text-base">
                     <span className="font-semibold">{name.trim()}</span> não
                     poderá comparecer à festa da Helena.
                   </p>
-                  <p className="font-sans text-muted text-xs mt-1">{phone}</p>
+                  <p className="font-sans text-muted text-sm mt-1">{phone}</p>
                   {message.trim() && (
-                    <p className="font-sans text-muted text-xs mt-2 italic leading-relaxed">
+                    <p className="font-sans text-muted text-sm mt-2 italic leading-relaxed">
                       "{message.trim()}"
                     </p>
                   )}
@@ -367,7 +367,7 @@ export default function RSVPForm() {
               <button
                 type="button"
                 onClick={() => setShowModal(false)}
-                className="flex-1 py-2.5 rounded-full border border-cream-warm text-muted font-sans text-sm font-semibold hover:border-sage transition-colors cursor-pointer"
+                className="flex-1 py-2.5 rounded-full border border-cream-warm text-muted font-sans text-base font-semibold hover:border-sage transition-colors cursor-pointer"
               >
                 Voltar
               </button>
@@ -375,7 +375,7 @@ export default function RSVPForm() {
                 type="button"
                 onClick={handleConfirm}
                 disabled={loading}
-                className="flex-1 py-2.5 rounded-full bg-sage text-white font-sans text-sm font-bold hover:bg-sage-dark transition-colors cursor-pointer disabled:opacity-50"
+                className="flex-1 py-2.5 rounded-full bg-sage text-white font-sans text-base font-bold hover:bg-sage-dark transition-colors cursor-pointer disabled:opacity-50"
               >
                 {loading ? "Enviando…" : "Confirmar"}
               </button>
