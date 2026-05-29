@@ -19,7 +19,7 @@ export default function Home() {
           Feito com muito amor pela Dinda Nathália
         </p>
         <p className="font-sans text-white/30 text-sm mt-1">
-          © {new Date().getFullYear()} Bday-Helena. Todos os direitos reservados.
+          © {new Date().getFullYear()} happybirthdayhelena. Todos os direitos reservados.
         </p>
         <a
           href="/admin"
