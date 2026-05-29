@@ -6,7 +6,7 @@ export default function RSVPSection() {
   const { heading, subtitle } = content.rsvp;
 
   return (
-    <section className="py-20 px-6 bg-gingham relative">
+    <section id="confirmacao" className="py-20 px-6 bg-gingham relative">
 
       {/* Helena 6 — MOBILE (<sm): canto superior direito da seção */}
       <div aria-hidden className="sm:hidden absolute top-6 right-4 pointer-events-none z-10">

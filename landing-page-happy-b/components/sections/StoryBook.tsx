@@ -172,8 +172,15 @@ function PageLeft({ id }: { id: SpreadId }) {
           </h2>
 
           <p className="font-serif text-rose text-base font-semibold leading-relaxed">
-            Visitem a nossa área de Confirmação de Presença e Sugestões de
-            Mimos!
+            Visitem a nossa área de{" "}
+            <a href="#confirmacao" className="underline underline-offset-2 hover:text-forest transition-colors">
+              Confirmação de Presença
+            </a>{" "}
+            e{" "}
+            <a href="#mimos" className="underline underline-offset-2 hover:text-forest transition-colors">
+              Sugestões de Mimos
+            </a>
+            !
           </p>
         </div>
       );
@@ -415,25 +422,6 @@ export default function StoryBook() {
 
         {/* Wrapper com setas */}
         <div className="relative">
-          {/* Seta esquerda */}
-          <button
-            onClick={() => navigate(current - 1)}
-            disabled={current === 0 || isAnimating}
-            aria-label="Página anterior"
-            className="hidden sm:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-14 z-10 w-10 h-10 rounded-full bg-forest/90 text-white text-2xl items-center justify-center shadow-lg hover:bg-forest transition-all disabled:opacity-20 disabled:cursor-not-allowed"
-          >
-            ‹
-          </button>
-
-          {/* Seta direita */}
-          <button
-            onClick={() => navigate(current + 1)}
-            disabled={current === SPREADS.length - 1 || isAnimating}
-            aria-label="Próxima página"
-            className="hidden sm:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-14 z-10 w-10 h-10 rounded-full bg-forest/90 text-white text-2xl items-center justify-center shadow-lg hover:bg-forest transition-all disabled:opacity-20 disabled:cursor-not-allowed"
-          >
-            ›
-          </button>
 
           {/* O Livro */}
           <div
@@ -475,13 +463,13 @@ export default function StoryBook() {
             </div>
           </div>
 
-          {/* Navegação mobile */}
-          <div className="flex sm:hidden items-center justify-between mt-5 px-1">
+          {/* Navegação */}
+          <div className="flex items-center justify-between mt-5 px-1">
             <button
               onClick={() => navigate(current - 1)}
               disabled={current === 0 || isAnimating}
               aria-label="Página anterior"
-              className="w-9 h-9 rounded-full bg-forest/90 text-white text-xl flex items-center justify-center disabled:opacity-20 disabled:cursor-not-allowed touch-manipulation"
+              className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-forest/90 text-white text-xl sm:text-2xl flex items-center justify-center shadow-lg hover:bg-forest transition-all disabled:opacity-20 disabled:cursor-not-allowed touch-manipulation"
             >
               ‹
             </button>
@@ -505,26 +493,10 @@ export default function StoryBook() {
               onClick={() => navigate(current + 1)}
               disabled={current === SPREADS.length - 1 || isAnimating}
               aria-label="Próxima página"
-              className="w-9 h-9 rounded-full bg-forest/90 text-white text-xl flex items-center justify-center disabled:opacity-20 disabled:cursor-not-allowed touch-manipulation"
+              className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-forest/90 text-white text-xl sm:text-2xl flex items-center justify-center shadow-lg hover:bg-forest transition-all disabled:opacity-20 disabled:cursor-not-allowed touch-manipulation"
             >
               ›
             </button>
-          </div>
-
-          {/* Navegação desktop */}
-          <div className="hidden sm:flex items-center justify-center gap-2 mt-5">
-            {SPREADS.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => navigate(i)}
-                aria-label={`Capítulo ${i + 1}`}
-                className={`rounded-full transition-all duration-200 ${
-                  i === current
-                    ? "w-3 h-3 bg-forest"
-                    : "w-2 h-2 bg-forest/25 hover:bg-forest/50"
-                }`}
-              />
-            ))}
           </div>
         </div>
       </div>

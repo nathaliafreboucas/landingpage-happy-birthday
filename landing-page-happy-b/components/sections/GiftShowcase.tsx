@@ -7,7 +7,7 @@ export default function GiftShowcase() {
   const { heading, subtitle, categories } = content.gifts;
 
   return (
-    <section className="py-20 px-6 bg-gingham relative">
+    <section id="mimos" className="py-20 px-6 bg-gingham relative">
 
       {/* Helena 3 — MOBILE (<lg): canto superior esquerdo da seção */}
       <div aria-hidden className="lg:hidden absolute top-46 left-4 sm:left-8 pointer-events-none z-10">

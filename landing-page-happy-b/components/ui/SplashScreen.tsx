@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import Image from "next/image";
 
 export default function SplashScreen() {
   const [hiding, setHiding] = useState(false);
   const [gone,   setGone]   = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
 
   function startHide() {
     setHiding(true);
@@ -13,28 +13,8 @@ export default function SplashScreen() {
   }
 
   useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    // iOS antigo (< 10) precisa desse atributo via JS
-    video.setAttribute("webkit-playsinline", "");
-
-    const tryPlay = () => {
-      video.play().catch(() => startHide());
-    };
-
-    // Só tenta play quando o browser tem dados suficientes —
-    // evita rejeição falsa por "not enough data" no iOS
-    video.addEventListener("canplay", tryPlay, { once: true });
-    // Se o vídeo já tem dados suficientes (cache/reload rápido), canplay não vai mais disparar
-    if (video.readyState >= 3) tryPlay();
-
-    const fallback = setTimeout(startHide, 3_000);
-
-    return () => {
-      video.removeEventListener("canplay", tryPlay);
-      clearTimeout(fallback);
-    };
+    const fallback = setTimeout(startHide, 5_000);
+    return () => clearTimeout(fallback);
   }, []);
 
   if (gone) return null;
@@ -47,14 +27,14 @@ export default function SplashScreen() {
       <div className="absolute inset-0 bg-gingham opacity-10 pointer-events-none" />
 
       <div className="relative w-[88vw] max-w-[380px] rounded-2xl overflow-hidden shadow-2xl">
-        <video
-          ref={videoRef}
-          src="/video/helena.mp4"
-          muted
-          playsInline
-          preload="auto"
+        <Image
+          src="/video/helena (1).gif"
+          alt="Helena"
+          width={380}
+          height={380}
           className="w-full h-auto block"
-          loop
+          unoptimized
+          priority
         />
       </div>
 

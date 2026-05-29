@@ -15,13 +15,6 @@ export type RSVPData = {
   phone: string;
 };
 
-const LS_KEY = "helena_rsvp_submitted";
-
-export function hasSubmittedLocally(): boolean {
-  if (typeof window === "undefined") return false;
-  return !!localStorage.getItem(LS_KEY);
-}
-
 export async function checkPhoneExists(phone: string): Promise<boolean> {
   const snap = await getDoc(doc(db, "rsvps", phone));
   return snap.exists();
@@ -32,5 +25,4 @@ export async function saveRSVP(data: RSVPData): Promise<void> {
     ...data,
     createdAt: serverTimestamp(),
   });
-  localStorage.setItem(LS_KEY, "1");
 }

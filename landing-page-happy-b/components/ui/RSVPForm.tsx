@@ -1,12 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { content } from "@/lib/content";
-import {
-  saveRSVP,
-  checkPhoneExists,
-  hasSubmittedLocally,
-} from "@/lib/rsvp";
+import { saveRSVP, checkPhoneExists } from "@/lib/rsvp";
 
 type Attending = "yes" | "no";
 
@@ -41,10 +37,6 @@ export default function RSVPForm() {
   const [submitted, setSubmitted]   = useState(false);
   const [duplicate, setDuplicate]   = useState(false);
   const [error, setError]           = useState("");
-
-  useEffect(() => {
-    if (hasSubmittedLocally()) setSubmitted(true);
-  }, []);
 
   function handleAttending(value: Attending) {
     setAttending(value);
